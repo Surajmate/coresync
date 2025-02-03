@@ -1,0 +1,24 @@
+{
+  "name": "coresync",
+  "version": "1.0.0",
+  "description": "A full-stack Node.js + React app",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd server && node server.js",
+    "client": "cd client && npm start"
+  },
+  "dependencies": {
+    "concurrently": "^7.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "web-vitals": "^4.2.4",
+    "webpack": "^5.97.1",
+    "webpack-dev-server": "^5.2.0"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+  }
+}
