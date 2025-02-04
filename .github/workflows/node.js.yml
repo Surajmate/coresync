@@ -44,5 +44,6 @@ jobs:
       run: |
         cd ..
         cd coresync
+        npm install concurrently --force
         npm run start  # Assuming "concurrently" is set up to run both client and server
 
