@@ -30,6 +30,9 @@ jobs:
 
     - name: Install dependencies for server
       run: |
+        pwd
+        cd ..
+        pwd
         cd coresync/server
         npm install
 
