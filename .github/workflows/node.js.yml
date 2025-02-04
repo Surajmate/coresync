@@ -38,7 +38,7 @@ jobs:
       run: |
         cd ..
         cd coresync/client
-        npm install
+        npm install --force
 
     - name: Run tests for server
       run: |
