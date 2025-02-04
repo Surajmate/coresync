@@ -47,3 +47,25 @@ jobs:
         npm install concurrently --force
         npm run build  # Assuming "concurrently" is set up to build both client and server
 
+    - name: Build both client and server
+      run: |
+        echo "Building both client and server..."
+        cd ..
+        cd coresync
+        npm run build  # Run both client and server build concurrently
+
+    - name: Check if the build folder is ready
+      run: |
+        echo "Checking if the build folder exists"
+        ls -l coresync/client/build
+        # Optionally add more checks like verifying if the build files are correct
+
+    - name: Serve client build for verification (Optional)
+      run: |
+        cd ..
+        cd coresync/client
+        npm install -g serve
+        serve -s build &  # Run serve in the background to verify deployment locally
+        sleep 10  # Wait a little to allow the server to start
+        curl -I http://localhost:5000  # Check if it's serving the build correctly
+
