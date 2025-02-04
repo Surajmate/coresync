@@ -5,9 +5,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
@@ -16,16 +16,40 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 22.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        node-version: [18.x, 20.x, 22.x]  # Node.js versions to test against
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
+
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci
-    - run: npm start
-    - run: npm test
+
+    - name: Install dependencies for server
+      run: |
+        cd coresync/server
+        npm install
+
+    - name: Install dependencies for client
+      run: |
+        cd coresync/client
+        npm install
+
+    - name: Run tests for server
+      run: |
+        cd coresync/server
+        npm test
+
+    - name: Run tests for client
+      run: |
+        cd coresync/client
+        npm test
+
+    - name: Run both client and server concurrently
+      run: |
+        cd coresync
+        npm run start  # Assuming "concurrently" is set up to run both client and server
+
