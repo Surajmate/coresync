@@ -30,29 +30,31 @@ jobs:
 
     - name: Install dependencies for server
       run: |
-        pwd
         cd ..
-        pwd
         cd coresync/server
         npm install
 
     - name: Install dependencies for client
       run: |
+        cd ..
         cd coresync/client
         npm install
 
     - name: Run tests for server
       run: |
+        cd ..
         cd coresync/server
         npm test
 
     - name: Run tests for client
       run: |
+        cd ..
         cd coresync/client
         npm test
 
     - name: Run both client and server concurrently
       run: |
+        cd ..
         cd coresync
         npm run start  # Assuming "concurrently" is set up to run both client and server
 
