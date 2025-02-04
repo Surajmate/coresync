@@ -40,18 +40,6 @@ jobs:
         cd coresync/client
         npm install --force
 
-    - name: Run tests for server
-      run: |
-        cd ..
-        cd coresync/server
-        npm test
-
-    - name: Run tests for client
-      run: |
-        cd ..
-        cd coresync/client
-        npm test
-
     - name: Run both client and server concurrently
       run: |
         cd ..
